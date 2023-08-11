@@ -10,7 +10,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import org.springframework.test.web.servlet.MockMvc;
 
-@WebMvcTest(HomeController.class)
+//@WebMvcTest(HomeController.class)
 class TacoApplicationTests {
 
 	@Autowired
@@ -22,8 +22,7 @@ class TacoApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(view().name("home"))
 				.andExpect(content().string(
-						containsString(("Welcome to taco"))
-				));
+						containsString(("Welcome to taco"))));
 	}
 
 }
