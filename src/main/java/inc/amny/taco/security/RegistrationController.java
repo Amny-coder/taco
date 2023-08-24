@@ -1,10 +1,11 @@
-package inc.amny.taco.web;
+package inc.amny.taco.security;
 
 
 import inc.amny.taco.data.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -22,5 +23,12 @@ public class RegistrationController {
     @GetMapping
     public String registerForm() {
         return "registration";
+    }
+
+    @PostMapping
+    public String processRegistration(RegistrationForm form) {
+        userRepo.save(form.toUser(passwordEncoder));
+
+        return "redirect:/login";
     }
 }
